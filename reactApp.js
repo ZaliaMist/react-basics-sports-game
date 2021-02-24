@@ -2,11 +2,19 @@
 function App(props){
   return (
     <div>
-      <h1>Welcome to the sports game starter</h1>
-      <Team name="Tree" pic="tree.jpeg"/>
+      <Game venue="forrest" />
     </div>
-    
   )
+}
+
+function Game(props) {
+  return (
+    <div>
+      <h1>Welcome to {props.venue} </h1>
+      <Team name="Tree" pic="tree.jpeg" />
+      <Team name="Flower" pic="flowers.jpeg" />
+    </div>
+  );
 }
 
 function getRandomInt(max) {
