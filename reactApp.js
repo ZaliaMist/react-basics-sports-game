@@ -3,7 +3,7 @@ function App(props){
   return (
     <div>
       <h1>Welcome to the sports game starter</h1>
-      <Team />
+      <Team name="Tree" pic="tree.jpeg"/>
     </div>
     
   )
@@ -19,7 +19,6 @@ class Team extends React.Component {
     this.state = {
       score: 0,
       shots: 0,
-      shotPercentage: 0,
     }
   }
 
@@ -39,18 +38,24 @@ class Team extends React.Component {
     missSound.play();
   }
 
-
+  shotPercentage = () => {
+    if (this.state.shots) {
+      return ((this.state.score/this.state.shots)*100).toFixed([0])
+    }
+  }
 
   render() {
     return (
       <div>
+        <h1>Team: {this.props.name}</h1>
+        <img src = {this.props.pic} />
         <p>Shots Taken: {this.state.shots}</p>
         <p>Team Score: {this.state.score}</p>
+        <p>Shot Percentage: {this.shotPercentage()}%</p>
         <button onClick={this.shootFunction}>Shot</button>
       </div>
     );
   }
-
 }
   
 //Render the application
